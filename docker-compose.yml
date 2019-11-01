@@ -40,6 +40,21 @@ services:
     networks:
       - elastic
 
+  minio:
+    image: minio/minio
+    container_name: minio
+    environment:
+       - MINIO_ACCESS_KEY=AKIAAYAIDONOTUSE
+       - MINIO_SECRET_KEY=iweib9taew3reuhi4ogo9idaiqu7aef3uuxe7zaph9
+    command: server /data
+    volumes:
+      - ./snapshots:/data
+    ports:
+      - 9000:9000
+    networks:
+      - elastic
+
+
 networks:
   elastic:
     driver: bridge
