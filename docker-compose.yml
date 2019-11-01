@@ -1,0 +1,45 @@
+version: '2.2'
+services:
+  es01:
+    image: elasticsearch:2.3
+    container_name: es01
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - ./data01:/usr/share/elasticsearch/data
+      - ./elasticsearch.yml:/etc/elasticsearch/elasticsearch.yml:ro
+      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    ports:
+      - 9200:9200
+    networks:
+      - elastic
+  es02:
+    image: elasticsearch:2.3
+    container_name: es02
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - 9201:9200
+    volumes:
+      - ./data02:/usr/share/elasticsearch/data
+      - ./elasticsearch.yml:/etc/elasticsearch/elasticsearch.yml:ro
+      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    networks:
+      - elastic
+  es03:
+    image: elasticsearch:2.3
+    container_name: es03
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - ./data03:/usr/share/elasticsearch/data
+      - ./elasticsearch.yml:/etc/elasticsearch/elasticsearch.yml:ro
+      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    ports:
+      - 9202:9200
+    networks:
+      - elastic
+
+networks:
+  elastic:
+    driver: bridge

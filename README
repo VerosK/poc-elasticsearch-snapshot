@@ -1,0 +1,13 @@
+
+# elasticsearch snapshot and restore
+
+This is proof of concept of legacy Elasticsearch snapshot and restore.
+
+## how to use
+
+1. Start ES cluster on one terminal  by `docker-compose up`
+
+2. Put some data to the cluster by `01-setup-data.sh`
+   
+ 
+
