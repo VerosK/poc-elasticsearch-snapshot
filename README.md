@@ -11,15 +11,10 @@ snapshot and restore.
 
 2. Put some data to the cluster by `01-setup-data.sh`
 
-3. Play with backup and recovery
+3. Do snapshot with `02-do-snapshot.sh`
 
-## TODO
+4. Do restore with `03-do-restore.sh`
 
-1. Add `cloud-aws` plugin [cloud-aws].
-
-2. Add S3 repository. [s3-repo] to the Elastic cluster, use [custom endpoint][s3-repo-endpoint].
-
-3. Run [snapshot].
 
 ## cleanup
 
@@ -31,7 +26,7 @@ Delete whole directory with this repository.
 Do not use this unless you have old ElasticSearch 2.3 cluster. 
 
 This repository was created to verify backup and restore 
-procedures of legacy application.
+procedures of one legacy application.
 
 
 

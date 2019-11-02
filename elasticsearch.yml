@@ -35,6 +35,10 @@ node.rack: docker-compose
 # Path to log files:
 #
 # path.logs: /path/to/logs
+
+#path.repo:
+#   - http://minio/
+
 #
 # ----------------------------------- Memory -----------------------------------
 #
@@ -101,3 +105,10 @@ discovery.zen.minimum_master_nodes: 3
 # Require explicit names when deleting indices:
 #
 # action.destructive_requires_name: true
+
+
+#s3.client.default.endpoint: 'minio:9000'
+#cloud.aws.s3.endpoint: 'http://minio:9000'
+#cloud.aws.s3.protocol: http
+cloud.aws.access_key: AKIAAYAIDONOTUSE
+cloud.aws.secret_key: iweib9taew3reuhi4ogo9idaiqu7aef3uuxe7zaph9

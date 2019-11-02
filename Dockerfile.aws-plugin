@@ -1,3 +1,11 @@
-FROM elasticsearch:2.3
+FROM elasticsearch:2.3.4
 
-RUN /usr/share/elasticsearch/bin/plugin install --batch cloud-aws
+#RUN /usr/share/elasticsearch/bin/plugin install --batch cloud-aws
+#
+# plugin from 
+# https://github.com/minio/cookbook/blob/master/docs/elasticsearch-snapshots-on-minio.md
+#
+#
+RUN /usr/share/elasticsearch/bin/plugin install --batch https://github.com/dutchcoders/elasticsearch-cloudaws-plugin/releases/download/v2.3.4-20160719/cloud-aws-2.3.4.zip
+
+RUN /usr/share/elasticsearch/bin/plugin install --batch cloud-azure
