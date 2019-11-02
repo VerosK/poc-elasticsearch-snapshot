@@ -1,7 +1,10 @@
 version: '2.2'
 services:
   es01:
-    image: elasticsearch:2.3
+    build: 
+      context: .
+      dockerfile: Dockerfile.aws-plugin
+    image: localhost/elasticsearch:with-aws
     container_name: es01
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
@@ -14,7 +17,7 @@ services:
     networks:
       - elastic
   es02:
-    image: elasticsearch:2.3
+    image: localhost/elasticsearch:with-aws
     container_name: es02
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
@@ -27,7 +30,7 @@ services:
     networks:
       - elastic
   es03:
-    image: elasticsearch:2.3
+    image: localhost/elasticsearch:with-aws
     container_name: es03
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
