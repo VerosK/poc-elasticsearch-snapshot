@@ -42,6 +42,15 @@ services:
       - 9202:9200
     networks:
       - elastic
+  cerebro:
+    image: lmenezes/cerebro
+    # FIXME: add
+    volumes:
+      - ./cerebro/cerebro.conf:/opt/cerebro/conf/application.conf:ro
+    ports:
+      - 9000:9000
+    networks:
+      - elastic
 
   minio:
     image: minio/minio
@@ -54,7 +63,7 @@ services:
     volumes:
       - ./snapshots:/data
     ports:
-      - 9000:9000
+      - 9001:9000
     networks:
       - elastic
 
