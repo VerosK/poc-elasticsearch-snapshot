@@ -9,7 +9,7 @@ set -e -x
 
 # Get Shakespeare data from Elasticsearch examples
 if [ ! -f shakespeare-data.json ]; then
-	wget --continue https://www.elastic.co/guide/en/kibana/3.0/snippets/shakespeare.json \
+	wget --continue https://web.archive.org/web/20190511200121/https://www.elastic.co/guide/en/kibana/3.0/snippets/shakespeare.json \
 		-O shakespeare-data.json
 fi
 
@@ -33,4 +33,3 @@ curl -XPUT http://localhost:9200/shakespeare -d @shakespeare-mapping.json
 
 # Put Shakespeare into the elasticsearch
 curl -XPUT http://localhost:9200/_bulk --data-binary @shakespeare-data.json
-

@@ -16,6 +16,7 @@ services:
       - 9200:9200
     networks:
       - elastic
+      - promnet
   es02:
     image: localhost/elasticsearch:with-aws
     container_name: es02
@@ -29,6 +30,7 @@ services:
       - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
     networks:
       - elastic
+      - promnet
   es03:
     image: localhost/elasticsearch:with-aws
     container_name: es03
@@ -42,6 +44,7 @@ services:
       - 9202:9200
     networks:
       - elastic
+      - promnet
   cerebro:
     image: lmenezes/cerebro
     # FIXME: add
@@ -67,7 +70,41 @@ services:
     networks:
       - elastic
 
+  exporter01:
+    image: justwatch/elasticsearch_exporter
+    command: ['--es.uri', 'http://es01:9200/']
+    container_name: exporter01
+    ports:
+        - 9115:9114
+    networks:
+      - promnet
+  exporter02:
+    image: justwatch/elasticsearch_exporter
+    command: ['--es.uri', 'http://es02:9200/']
+    container_name: exporter02
+    ports:
+        - 9116:9114
+    networks:
+      - promnet
+  exporter03:
+    image: justwatch/elasticsearch_exporter
+    command: ['--es.uri', 'http://es03:9200/']
+    container_name: exporter03
+    ports:
+        - 9117:9114
+    networks:
+      - promnet
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - 9090:9090
+    networks:
+      - promnet
 
 networks:
   elastic:
+    driver: bridge
+  promnet:
     driver: bridge
