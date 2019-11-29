@@ -24,6 +24,7 @@ Delete whole directory with this repository.
 ## Prometheus
 
 - Prometheus: http://localhost:9090/
+- Alertmanager: http://localhost:9093/
 - ES exporter #1: http://localhost:9115/metrics
 - ES exporter #2: http://localhost:9116/metrics
 - ES exporter #3: http://localhost:9117/metrics

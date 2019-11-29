@@ -98,8 +98,15 @@ services:
     image: prom/prometheus
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./elasticsearch_rules.yml:/etc/prometheus/elasticsearch_rules.yml
     ports:
       - 9090:9090
+    networks:
+      - promnet
+  alertmanager:
+    image: prom/alertmanager
+    ports:
+        - 9093:9093
     networks:
       - promnet
 
